@@ -38,7 +38,7 @@ screens: the tools that use it are
 - **`Space` is the leader.** After it, the next letter is a group named by
   the first letter of a verb or a noun; the letter after that is the thing.
   A box lists what can follow 300 ms after `Space` (a fast typist never
-  sees it); a sequence never times out, `Esc` cancels it. These groups mean
+  sees it); a sequence never times out, `Esc` cancels it, `Backspace` goes up a level. These groups mean
   the same in every tool, and a tool may leave one empty but never use its
   letter for anything else:
 

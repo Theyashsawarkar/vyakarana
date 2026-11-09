@@ -12,7 +12,7 @@ import (
 // In NORMAL and VISUAL a digit starts a count (5j) unless the view binds
 // that digit itself; a key that starts a longer sequence waits for the
 // rest (g g, Space p m), for as long as it takes: there is no timeout,
-// Esc cancels. The which-key box is the tool's to show, after a short
+// Esc cancels, Backspace goes up a level. The which-key box is the tool's to show, after a short
 // delay, while Pending (popup.WhichAfter).
 //
 // In INSERT and COMMAND only the keys bound for that mode are the
@@ -33,6 +33,7 @@ type Result struct {
 	Pending bool   // a count or a sequence is under way: wait for more
 	Gen     int    // compare with the which-key timer's (popup.WhichMsg)
 	Cancel  bool   // Esc cancelled a count or a sequence
+	Back    bool   // Backspace went up a level of a sequence
 	Unknown string // the keys, when they mean nothing here
 	Moved   string // the keys were moved: say "<Unknown> moved to <Moved>"
 	Handled bool   // false: the key belongs to the text field
@@ -97,6 +98,16 @@ func (e *Engine) Feed(key, where string) Result {
 	if t == "Esc" && e.Waiting() {
 		e.Reset()
 		return Result{Cancel: true, Handled: true, Gen: e.gen}
+	}
+	if t == "Backspace" && e.pending != "" {
+		// up a level: "Space m" → "Space"; the last one cancels
+		if i := strings.LastIndex(e.pending, " "); i >= 0 {
+			e.pending = e.pending[:i]
+			e.gen++
+			return Result{Pending: true, Back: true, Gen: e.gen, Handled: true}
+		}
+		e.Reset()
+		return Result{Cancel: true, Back: true, Handled: true, Gen: e.gen}
 	}
 	if e.pending == "" && len(t) == 1 && t[0] >= '0' && t[0] <= '9' && (t != "0" || e.count > 0) {
 		// Once a count has started, every digit is part of it (72j), even

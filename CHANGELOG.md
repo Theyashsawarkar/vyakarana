@@ -2,6 +2,10 @@
 
 Newest first. Releases are tags (`vX.Y.Z`).
 
+## Unreleased (v0.2.0)
+
+- `Backspace` goes up a level of a pending sequence (`Space m` → `Space`; on `Space` alone it cancels), as which-key does in Doom and Spacemacs; `Result.Back` says it did. With nothing pending it is an ordinary key. narada is the first to use it.
+
 ## v0.1.0 -- 2026-11-09
 
 - First version: the key grammar every Vayu terminal tool shares, as a Go

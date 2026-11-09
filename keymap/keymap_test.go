@@ -155,3 +155,22 @@ func TestToken(t *testing.T) {
 		}
 	}
 }
+
+func TestBackspaceGoesUpALevel(t *testing.T) {
+	e := NewEngine(testMap(), mode.Normal)
+	feed(&e, "ports", " ", "c")
+	if r := feed(&e, "ports", "backspace"); !r.Pending || !r.Back || e.Pending() != "Space" {
+		t.Fatalf("Space c ⌫: %+v %q", r, e.Pending())
+	}
+	if r := feed(&e, "ports", "y", "u"); r.Act != "copy-url" {
+		t.Fatalf("then y u: %+v", r)
+	}
+	feed(&e, "ports", " ")
+	if r := feed(&e, "ports", "backspace"); !r.Cancel || e.Waiting() {
+		t.Fatalf("Space ⌫ cancels: %+v", r)
+	}
+	// With nothing pending, Backspace is an ordinary key.
+	if r := feed(&e, "", "backspace"); r.Back || r.Cancel {
+		t.Fatalf("⌫ alone: %+v", r)
+	}
+}
