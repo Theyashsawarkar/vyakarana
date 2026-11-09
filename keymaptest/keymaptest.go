@@ -67,15 +67,17 @@ func Reserved(t *testing.T, k *keymap.Keymap) {
 }
 
 // NoPrefixClash fails when a key is bound and also starts a longer key in
-// the same mode and view: the longer one would wait forever for it.
+// the same mode and view: the longer one would wait forever for it. Like
+// NoDuplicate, it leaves out bindings that only document a key the tool
+// reads itself (no Act, no Moved): the engine never sees them.
 func NoPrefixClash(t *testing.T, k *keymap.Keymap) {
 	t.Helper()
-	type slot struct {
-		m     mode.Mode
-		where string
-	}
+	live := func(b keymap.Binding) bool { return b.Act != "" || b.Moved != "" }
 	for i, a := range k.Binds {
 		for _, b := range k.Binds[i:] {
+			if !live(a) || !live(b) {
+				continue
+			}
 			for _, sa := range append([]string{a.Seq}, a.Alt...) {
 				for _, sb := range append([]string{b.Seq}, b.Alt...) {
 					short, long := sa, sb

@@ -5,6 +5,7 @@ Newest first. Releases are tags (`vX.Y.Z`).
 ## Unreleased (v0.2.0)
 
 - `Backspace` goes up a level of a pending sequence (`Space m` → `Space`; on `Space` alone it cancels), as which-key does in Doom and Spacemacs; `Result.Back` says it did. With nothing pending it is an ordinary key. narada is the first to use it.
+- `keymaptest.NoPrefixClash` leaves out bindings that only document keys a screen reads itself (no `Act`, no `Moved`), as `NoDuplicate` already did: a dialog's `d` no longer clashes with NORMAL's `d d`.
 
 ## v0.1.0 -- 2026-11-09
 
