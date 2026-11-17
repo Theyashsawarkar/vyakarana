@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>vyakarana · The key grammar every Vayu terminal tool shares: vim modes, Space as the leader, a which-key box, the help sheet and the palette, as a Go module for Bubble Tea.</title>
+<meta name="description" content="The key grammar every Vayu terminal tool shares: vim modes, Space as the leader, a which-key box, the help sheet and the palette, as a Go module for Bubble Tea.">
+<meta property="og:title" content="vyakarana · The key grammar every Vayu terminal tool shares: vim modes, Space as the leader, a which-key box, the help sheet and the palette, as a Go module for Bubble Tea.">
+<meta property="og:description" content="The key grammar every Vayu terminal tool shares: vim modes, Space as the leader, a which-key box, the help sheet and the palette, as a Go module for Bubble Tea.">
+<meta name="theme-color" content="#11111b">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>:root{--accent:#f5e0dc;--glow:#f5e0dc33}</style>
+</head>
+<body>
+<header class="top"><div class="in">
+<a class="brand" href="index.html"><img src="assets/logo.svg" alt=""><span>vyakarana <small>व्याकरण</small></span></a>
+<nav><a href="index.html" class="on">Overview</a><a href="changelog.html" class="">Changelog</a><a href="adr/index.html" class=" hide">Decisions</a><a class="gh" href="https://github.com/Theyashsawarkar/vyakarana">GitHub ↗</a></nav></div></header>
+<section class="hero"><div class="in"><div>
+<div class="eyebrow">key grammar</div>
+<h1>vyakarana</h1>
+<div class="sa">व्याकरण <span>· “grammar”</span></div>
+<p class="lead">The key grammar every Vayu terminal tool shares: vim modes, Space as the leader, a which-key box, the help sheet and the palette, as a Go module for Bubble Tea.</p>
+<figure class="shloka"><p lang="sa">येनाक्षरसमाम्नायमधिगम्य महेश्वरात् ।<br>कृत्स्नं व्याकरणं प्रोक्तं तस्मै पाणिनये नमः ॥</p><figcaption>Salutation to Pāṇini, who received the list of sounds from Maheśvara and set out the whole of grammar. <cite>Pāṇinīya Śikṣā 57 (as numbered on sanskritdocuments.org)</cite></figcaption></figure>
+<div class="cta"><a class="btn primary" href="https://github.com/Theyashsawarkar/vyakarana#install">Install</a><a class="btn" href="https://github.com/Theyashsawarkar/vyakarana">GitHub ↗</a>
+<a class="btn" href="changelog.html">What's new in v0.2.0</a></div>
+<div class="meta"><span><b>v0.2.0</b> latest</span><span><b>2</b> releases</span><span><b>1</b> decisions recorded</span><span><b>MIT</b> license</span></div>
+</div><img class="logo" src="assets/logo.svg" alt="vyakarana logo"></div></section>
+<div class="wrap"><aside class="toc"><b>On this page</b><a class="l2" href="#the-grammar">The grammar</a><a class="l2" href="#packages">Packages</a><a class="l2" href="#using-it">Using it</a><a class="l2" href="#license">License</a></aside><article>
+<h1 id="vyakarana"><a class="anchor" href="#vyakarana">#</a>vyakarana</h1>
+<p><strong>vyākaraṇa</strong> (व्याकरण) is Sanskrit for <em>grammar</em>, literally "taking apart, setting out". This module is the key grammar every Vayu terminal tool shares, so that knowing one tool's keys means knowing the next one's.</p>
+<p>It is a Go module for <a href="https://github.com/charmbracelet/bubbletea">Bubble Tea</a> screens: the tools that use it are <a href="https://github.com/Theyashsawarkar/pattan">pattan</a>, <a href="https://github.com/Theyashsawarkar/nauka">nauka</a>, <a href="https://github.com/Theyashsawarkar/vaikhari">vaikhari</a> and <a href="https://github.com/Theyashsawarkar/darshan">darshan</a>.</p>
+<p align="center">
+  <img alt="vaikhari's Queue with vyakarana's which-key box open after Space: the groups that can follow, t tabs, r reload, e edit, y copy, p post, comma settings, ? every key, q quit, o open, d delete" src="assets/screenshots/leader.png" width="100%">
+</p>
+<p align="center">
+  <img alt="The help sheet (Space ?): every key of the view, grouped by where it works, the Space sequences beside the direct keys" src="assets/screenshots/help.png" width="49%">
+  <img alt="The palette (Space Space): every action of the view, searched, with its keys on the right" src="assets/screenshots/palette.png" width="49%">
+</p>
+<p align="center"><sub>In vaikhari's demo mode: made-up accounts and posts.</sub></p>
+<h2 id="the-grammar"><a class="anchor" href="#the-grammar">#</a>The grammar</h2>
+<ul><li><strong>Modes.</strong> NORMAL: keys are commands and typing changes nothing (forms open read-only). INSERT: typing goes into the field; <code>Esc</code> goes back to NORMAL; in a one-line search, <code>Ctrl+j</code> / <code>Ctrl+k</code> still move the list. VISUAL marks many rows, COMMAND is the <code>:</code> line, where a tool has them.</li><li><strong>Direct keys</strong> (NORMAL): <code>j</code> / <code>k</code> move (<code>5j</code> repeats), <code>g g</code> / <code>G</code> the first / last (<code>5gg</code> the fifth), <code>Ctrl+d</code> / <code>Ctrl+u</code> half a page, <code>H</code> / <code>L</code> the previous / next tab, <code>/</code> searches, <code>Enter</code> does the main thing, <code>o</code> opens, <code>y</code> copies, <code>dd</code> deletes, <code>r</code> refreshes, <code>?</code> shows every key, <code>q</code> quits, <code>Esc</code> goes back one step.</li><li><strong><code>Space</code> is the leader.</strong> After it, the next letter is a group named by the first letter of a verb or a noun; the letter after that is the thing. A box lists what can follow 300 ms after <code>Space</code> (a fast typist never sees it); a sequence never times out, <code>Esc</code> cancels it, <code>Backspace</code> goes up a level. These groups mean the same in every tool, and a tool may leave one empty but never use its letter for anything else:</li></ul>
+<div class="table"><table><thead><tr><th>Keys</th><th>Group</th></tr></thead><tbody><tr><td><code>Space Space</code></td><td>the palette: every action of this view, searched</td></tr><tr><td><code>Space ?</code></td><td>every key of this view</td></tr><tr><td><code>Space q</code></td><td>close</td></tr><tr><td><code>Space t</code></td><td>tabs</td></tr><tr><td><code>Space u</code></td><td>toggles: <code>u f</code> fullscreen, <code>u p</code> preview, <code>u h</code> hidden, <code>u s</code> secrets</td></tr><tr><td><code>Space y</code></td><td>copy</td></tr><tr><td><code>Space f</code></td><td>find and filter</td></tr><tr><td><code>Space s</code></td><td>sort</td></tr><tr><td><code>Space r</code></td><td>refresh</td></tr><tr><td><code>Space a</code></td><td>add, new</td></tr><tr><td><code>Space d</code></td><td>delete (always asks first)</td></tr><tr><td><code>Space e</code></td><td>edit</td></tr><tr><td><code>Space o</code></td><td>open outside: <code>o b</code> browser, <code>o e</code> $EDITOR, <code>o t</code> terminal</td></tr><tr><td><code>Space g</code></td><td>go to a place</td></tr><tr><td><code>Space m</code></td><td>mark: star, pin, read</td></tr><tr><td><code>Space ,</code></td><td>settings</td></tr><tr><td><code>Space k</code></td><td>ask the AI</td></tr></tbody></table></div>
+<p>The letters <code>b c h i j l n p v w x z</code> are free for a tool's own nouns (<code>Space c</code> a container in nauka, <code>Space p</code> a post in vaikhari).</p>
+<ul><li><strong>Safe.</strong> Anything that can't be undone asks first, and only <code>y</code> says yes: <code>Enter</code> doesn't, so a second <code>Enter</code> can't delete. A key that moved says where it went (<code>t moved to Space a t</code>) instead of doing nothing.</li></ul>
+<h2 id="packages"><a class="anchor" href="#packages">#</a>Packages</h2>
+<div class="table"><table><thead><tr><th>Package</th><th>What it is</th></tr></thead><tbody><tr><td><code>keymap</code></td><td><code>Binding</code> (keys, action, verb-first description, view, modes), <code>Keymap</code>, the <code>Engine</code> (counts, sequences, the leader), the reserved groups, the help sheet's sections, and generators for Vayu's keybinding search (<code>scripts/keybindings</code>, scope <code>&lt;tool&gt; &lt;view&gt;:&lt;mode&gt;</code>) and the README's key tables</td></tr><tr><td><code>mode</code></td><td>NORMAL, INSERT, VISUAL, COMMAND</td></tr><tr><td><code>popup</code></td><td>the which-key box (<code>WhichAfter</code>, <code>WhichKey</code>), the help sheet (<code>Help</code>), the palette (<code>Palette</code>), the confirm (<code>Confirm</code>, <code>y</code> only), the tmux popup's own key (<code>IsPopupKey</code>), <code>Keys</code> (splits keys typed fast into one at a time)</td></tr><tr><td><code>ui</code></td><td>the drawing kit: rounded boxes, tabs, key caps, footer, table, colours from <a href="https://github.com/Theyashsawarkar/varna">varna</a>'s theme</td></tr><tr><td><code>text</code></td><td>kitty's row and column diacritics, for image placeholders</td></tr><tr><td><code>keymaptest</code></td><td>test helpers: <code>VerbFirst</code>, <code>Reserved</code>, <code>NoPrefixClash</code>, <code>NoDuplicate</code>, <code>All</code>, <code>FileUpToDate</code>, <code>SectionUpToDate</code></td></tr></tbody></table></div>
+<h2 id="using-it"><a class="anchor" href="#using-it">#</a>Using it</h2>
+<p>A tool keeps its keys as data and switches on the action names the engine gives back (Bubble Tea models are values, so a binding names its action instead of holding a closure over a stale copy):</p>
+<pre class="code" data-lang="go"><code>var Keys = keymap.New(&quot;pattan&quot;,
+	keymap.Common{Noun: &quot;port&quot;, Tabs: true, Search: &quot;Search the ports&quot;, Refresh: &quot;Rescan the ports&quot;}.Binds(),
+	[]keymap.Binding{
+		{Seq: &quot;d d&quot;, Alt: []string{&quot;Space d s&quot;}, Act: &quot;stop&quot;, Desc: &quot;Stop the server (asks first)&quot;, Where: &quot;ports&quot;},
+		{Seq: &quot;Space a t&quot;, Act: &quot;share&quot;, Desc: &quot;Start a tunnel to the port&quot;, Where: &quot;ports&quot;},
+		{Seq: &quot;t&quot;, Moved: &quot;Space a t&quot;, Where: &quot;ports&quot;},
+	}).Where(&quot;ports&quot;, &quot;On a port&quot;)
+
+// in the model
+r := m.eng.Feed(msg.String(), m.where()) // per key of popup.Keys(msg)
+switch {
+case !r.Handled: // INSERT: the key is the text field&#x27;s
+case r.Pending:
+	return m, popup.WhichAfter(r.Gen)
+case r.Message() != &quot;&quot;:
+	m.say(r.Message())
+case r.Act != &quot;&quot;:
+	return m.run(r.Act, r.Count, r.Counted)
+}</code></pre>
+<p>and in its tests:</p>
+<pre class="code" data-lang="go"><code>func TestKeys(t *testing.T) {
+	keymaptest.All(t, Keys)
+	keymaptest.FileUpToDate(t, &quot;../../scripts/keybindings&quot;, Keys.KeybindingsFile(&quot;Tmux&quot;, &quot;go test ./internal/tui -update&quot;), *update)
+	keymaptest.SectionUpToDate(t, &quot;../../README.md&quot;, Keys.Markdown(), *update)
+}</code></pre>
+<h2 id="license"><a class="anchor" href="#license">#</a>License</h2>
+<p>MIT</p>
+</article></div>
+<footer><div class="in"><div><h4>Desktop</h4><a href="https://theyashsawarkar.github.io/vayu/" class="">vayu <span>वायु · the keyboard-driven Wayland desktop</span></a></div><div><h4>Apps</h4><a href="https://theyashsawarkar.github.io/kosha/" class="">kosha <span>कोश · package manager</span></a><a href="https://theyashsawarkar.github.io/nada/" class="">nada <span>नाद · music player</span></a><a href="https://theyashsawarkar.github.io/drishya/" class="">drishya <span>दृश्य · video player</span></a><a href="https://theyashsawarkar.github.io/sangam/" class="">sangam <span>संगम · pull requests in the terminal</span></a><a href="https://theyashsawarkar.github.io/narada/" class="">narada <span>नारद · mail and chat in the terminal</span></a><a href="https://theyashsawarkar.github.io/pattan/" class="">pattan <span>पत्तन · ports and tunnels</span></a><a href="https://theyashsawarkar.github.io/nauka/" class="">nauka <span>नौका · Docker in the terminal</span></a><a href="https://theyashsawarkar.github.io/vaikhari/" class="">vaikhari <span>वैखरी · posts to X and LinkedIn</span></a><a href="https://theyashsawarkar.github.io/dvarapala/" class="">dvarapala <span>द्वारपाल · commands for AI agents, approved</span></a><a href="https://theyashsawarkar.github.io/pramana/" class="">pramana <span>प्रमाण · password prompts</span></a><a href="https://theyashsawarkar.github.io/vesha/" class="">vesha <span>वेष · Claude Code accounts</span></a><a href="https://theyashsawarkar.github.io/vishvakarma/" class="">vishvakarma <span>विश्वकर्मा · skills for every AI agent</span></a><a href="https://theyashsawarkar.github.io/ekatva/" class="">ekatva <span>एकत्व · phone and laptop, linked</span></a><a href="https://theyashsawarkar.github.io/varna/" class="">varna <span>वर्ण · theme engine</span></a><a href="https://theyashsawarkar.github.io/vinyasa/" class="">vinyasa <span>विन्यास · settings</span></a></div><div><h4>Vyom</h4><a href="https://theyashsawarkar.github.io/vyom/" class="">vyom <span>व्योम · panels runtime</span></a></div><div><h4>Vyom tools</h4><a href="https://theyashsawarkar.github.io/dvara/" class="">dvara <span>द्वार · apps</span></a><a href="https://theyashsawarkar.github.io/ganit/" class="">ganit <span>गणित · calculator</span></a><a href="https://theyashsawarkar.github.io/smriti/" class="">smriti <span>स्मृति · clipboard</span></a><a href="https://theyashsawarkar.github.io/bhava/" class="">bhava <span>भाव · emoji</span></a><a href="https://theyashsawarkar.github.io/tarang/" class="">tarang <span>तरंग · Wi‑Fi</span></a><a href="https://theyashsawarkar.github.io/setu/" class="">setu <span>सेतु · Bluetooth</span></a><a href="https://theyashsawarkar.github.io/doot/" class="">doot <span>दूत · phone</span></a><a href="https://theyashsawarkar.github.io/patra/" class="">patra <span>पात्र · Docker</span></a><a href="https://theyashsawarkar.github.io/akashvani/" class="">akashvani <span>आकाशवाणी · notifications</span></a><a href="https://theyashsawarkar.github.io/raga/" class="">raga <span>राग · YouTube</span></a><a href="https://theyashsawarkar.github.io/mudra/" class="">mudra <span>मुद्रा · keybindings</span></a><a href="https://theyashsawarkar.github.io/urja/" class="">urja <span>ऊर्जा · battery</span></a><a href="https://theyashsawarkar.github.io/vishram/" class="">vishram <span>विश्राम · power menu</span></a><a href="https://theyashsawarkar.github.io/kendra/" class="">kendra <span>केन्द्र · quick settings</span></a><a href="https://theyashsawarkar.github.io/darpana/" class="">darpana <span>दर्पण · phone, mirrored</span></a></div></div>
+<div class="bottom">vyakarana is free software under the MIT license · <a href="https://github.com/Theyashsawarkar/vyakarana">source</a> · <a href="https://github.com/Theyashsawarkar/vyakarana/issues">issues</a> · <a href="changelog.html">changelog</a> · part of <a href="https://theyashsawarkar.github.io/vayu/">Vayu</a></div></footer>
+<script>
+document.querySelectorAll('pre.code').forEach(p=>{const b=document.createElement('button');b.className='copy';b.textContent='Copy';
+b.onclick=()=>{navigator.clipboard.writeText(p.innerText.replace(/^Copy/,'')).then(()=>{b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1200)})};p.appendChild(b)});
+const links=[...document.querySelectorAll('.toc a')];if(links.length){const hs=links.map(a=>document.getElementById(a.hash.slice(1))).filter(Boolean);
+const on=()=>{let cur=hs[0];for(const h of hs){if(h.getBoundingClientRect().top<120)cur=h}links.forEach(a=>a.classList.toggle('on',cur&&a.hash==='#'+cur.id))};
+addEventListener('scroll',on,{passive:true});on()}
+</script>
+</body>
+</html>

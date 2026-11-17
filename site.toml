@@ -1,0 +1,11 @@
+# The project website (docs/, GitHub Pages): built by scripts/build-site.py
+name = "vyakarana"
+sanskrit = "व्याकरण"
+meaning = "grammar"
+tagline = "The key grammar every Vayu terminal tool shares: vim modes, Space as the leader, a which-key box, the help sheet and the palette, as a Go module for Bubble Tea."
+color = "rosewater"
+kind = "key grammar"
+logo = "assets/logo.svg"
+shloka = "येनाक्षरसमाम्नायमधिगम्य महेश्वरात् ।\nकृत्स्नं व्याकरणं प्रोक्तं तस्मै पाणिनये नमः ॥"
+shloka_meaning = "Salutation to Pāṇini, who received the list of sounds from Maheśvara and set out the whole of grammar."
+shloka_source = "Pāṇinīya Śikṣā 57 (as numbered on sanskritdocuments.org)"

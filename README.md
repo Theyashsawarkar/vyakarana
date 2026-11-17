@@ -24,6 +24,15 @@ screens: the tools that use it are
 [vaikhari](https://github.com/Theyashsawarkar/vaikhari) and
 [darshan](https://github.com/Theyashsawarkar/darshan).
 
+<p align="center">
+  <img alt="vaikhari's Queue with vyakarana's which-key box open after Space: the groups that can follow, t tabs, r reload, e edit, y copy, p post, comma settings, ? every key, q quit, o open, d delete" src="assets/screenshots/leader.png" width="100%">
+</p>
+<p align="center">
+  <img alt="The help sheet (Space ?): every key of the view, grouped by where it works, the Space sequences beside the direct keys" src="assets/screenshots/help.png" width="49%">
+  <img alt="The palette (Space Space): every action of the view, searched, with its keys on the right" src="assets/screenshots/palette.png" width="49%">
+</p>
+<p align="center"><sub>In vaikhari's demo mode: made-up accounts and posts.</sub></p>
+
 ## The grammar
 
 - **Modes.** NORMAL: keys are commands and typing changes nothing (forms

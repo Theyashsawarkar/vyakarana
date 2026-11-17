@@ -2,6 +2,10 @@
 
 Newest first. Releases are tags (`vX.Y.Z`).
 
+## Unreleased
+
+- A website (GitHub Pages) with screenshots of the which-key box, the help sheet and the palette, taken in vaikhari's demo mode.
+
 ## v0.2.0 -- 2026-11-09
 
 - `Backspace` goes up a level of a pending sequence (`Space m` → `Space`; on `Space` alone it cancels), as which-key does in Doom and Spacemacs; `Result.Back` says it did. With nothing pending it is an ordinary key. narada is the first to use it.
