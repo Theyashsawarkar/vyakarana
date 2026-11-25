@@ -4,6 +4,7 @@ Newest first. Releases are tags (`vX.Y.Z`).
 
 ## Unreleased
 
+- The website has Vayu's Spatial look: graphite glass, a floating navigation bar, near-white for links and the main button, and the tool's own colour only as its signature (the logo's glow, the shloka's line, the release dots). No more all-caps labels.
 - A website (GitHub Pages) with screenshots of the which-key box, the help sheet and the palette, taken in vaikhari's demo mode.
 
 ## v0.2.0 -- 2026-11-09
